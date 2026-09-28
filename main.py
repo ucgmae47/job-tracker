@@ -10,26 +10,24 @@ def root():
 def applications():
     return [
         {
-            "id": "12345",
+            "id": 1,
             "company": "Raytheon",
             "role": "Software Engineer 1",
-            "status": "Pending",
-            "date_applied": "09-05-2026"
+            "status": "offer",
+            "date_applied": "2026-09-05"
         },
         {
-            "id": "12345",
-            "company": "Raytheon",
-            "role": "Software Engineer 1",
-            "status": "Pending",
-            "date_applied": "09-05-2026"
+            "id": 2,
+            "company": "JPMorgan",
+            "role": "Data Scientist",
+            "status": "interviewing",
+            "date_applied": "2026-09-14"
         },
         {
-            "id": "12345",
-            "company": "Raytheon",
-            "role": "Software Engineer 1",
-            "status": "Pending",
-            "date_applied": "09-05-2026"
+            "id": 3,
+            "company": "Fetch Freight",
+            "role": "AI Solutions Engineer",
+            "status": "rejected",
+            "date_applied": "2026-09-01"
         }
     ]
-        
-
