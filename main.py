@@ -1,6 +1,8 @@
 from fastapi import FastAPI
+import psycopg
 
 app = FastAPI()
+conn_string = "postgresql://jobtracker:devpassword@localhost:5432/jobtracker"
 
 @app.get("/")
 def root():
@@ -8,26 +10,7 @@ def root():
 
 @app.get("/applications")
 def applications():
-    return [
-        {
-            "id": 1,
-            "company": "Raytheon",
-            "role": "Software Engineer 1",
-            "status": "offer",
-            "date_applied": "2026-09-05"
-        },
-        {
-            "id": 2,
-            "company": "JPMorgan",
-            "role": "Data Scientist",
-            "status": "interviewing",
-            "date_applied": "2026-09-14"
-        },
-        {
-            "id": 3,
-            "company": "Fetch Freight",
-            "role": "AI Solutions Engineer",
-            "status": "rejected",
-            "date_applied": "2026-09-01"
-        }
-    ]
+    with psycopg.connect(conn_string) as conn:
+        with conn.cursor(row_factory=psycopg.rows.dict_row) as cur:
+            cur.execute("SELECT id, company, role, status, date_applied FROM applications")
+            return cur.fetchall()
